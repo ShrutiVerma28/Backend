@@ -7,7 +7,7 @@ const pool = require('./database');
 const app = express();
 //const routes = require('./router');
 
-const PORT = process.enc.PORT || 3300;
+const PORT = process.env.PORT || 3300;
 const server = http.createServer(app);
 
 app.get('/', (req, res) =>{
