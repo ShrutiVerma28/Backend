@@ -100,7 +100,7 @@ passport.deserializeUser(function(id, done){
   })
 });
 
-app.get('/', isAuthenticated, (req, res) =>{
+app.get('/',  (req, res) =>{
     res.send('Hello World!!');
 })
 
@@ -122,7 +122,7 @@ app.post("/signin", passport.authenticate('local', {
 
 });
 
-app.get('/quiz',isAuthenticated, (req, res) => {
+app.get('/quiz', (req, res) => {
     pool.query("SELECT * FROM Quiz", function (err, result, fields) {
         if (err) throw err;
         res.send(result);
@@ -147,7 +147,7 @@ app.post('/quiz/game/:id/return', (req, res) => {
     })
 })
 
-app.get('/leaderboard',isAuthenticated, (req, res) => {
+app.get('/leaderboard', (req, res) => {
      
     pool.query("SELECT * FROM users", function (err, result, fields) {
         if (err) throw err;
@@ -162,7 +162,7 @@ app.get('/quiz/game/return', (req, res) => {
       })
 })
 
-app.get('/quiz/:id/game',isAuthenticated, (req, res) => {
+app.get('/quiz/:id/game', (req, res) => {
 
     let quiz = [];
     let id = req.params.id;
